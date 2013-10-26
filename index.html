@@ -38,16 +38,24 @@
 			<li data-name="kimonotocat"><img src="images/kimonotocat.png"></li>
 		</ul>
 	</div>
+
+	<input type="submit" value="Reset" id="reset">
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 <script type="text/javascript">
- 
+ 	
+ 	var startTime;
+
 	var selectCard = function() {
 		var $this = $(this);
 		$this.addClass("selected")
 		if ($(".selected").size() == 2) {
 			setTimeout(checkPattern,1400);
+		}
+
+		if (startTime === undefined) {
+			startTime = new Date();
 		}
 	}
 
@@ -55,7 +63,10 @@
 		if (isMatchPattern()) {
 			$(".selected").removeClass("selected").addClass("removed").unbind("click");
 			if ($(".removed").length == 20) {
-				alert("Game Over");
+				var endDate = new Date();
+				var endTime = endDate - startTime;
+				var seconds = endTime / 1000;
+				alert("Game Over! It took you " + seconds + " seconds to finish the game!");
 			}
 		} else {
 			$(".selected").removeClass("selected");
@@ -69,10 +80,12 @@
 		return (pattern == anotherPattern)
 	}
 
-	var removeTookCards = function() {
-		
+	var resetGame = function() {
+		startTime = undefined;
+		$(".removed").removeClass("removed").bind("click",selectCard);
 	}
 
+	$("#reset").click(resetGame);
  	$(".board li").click(selectCard);
 
 </script>
