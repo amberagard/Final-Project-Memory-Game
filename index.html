@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" media="screen"/>
+
+<link rel="stylesheet" href="css/main.css"/>
+
+	<title>Memory Game</title>
+
+</head>
+
+<body>
+<div id="container">
+	<h1>Memory Game</h1>
+
+	<div id="game">
+		<ul class="board">
+			<li data-name="octobiwan"><img src="images/octobiwan.png"></li>
+			<li data-name="andycat"><img src="images/andycat.png"></li>
+			<li data-name="professortocat"><img src="images/professortocat.png"></li>
+			<li data-name="droidtocat"><img src="images/droidtocat.png"></li>
+			<li data-name="linktocat"><img src="images/linktocat.png"></li>
+			<li data-name="droidtocat"><img src="images/droidtocat.png"></li>
+			<li data-name="spocktocat"><img src="images/spocktocat.png"></li>
+			<li data-name="andycat"><img src="images/andycat.png"></li>
+			<li data-name="stormtroopocat"><img src="images/stormtroopocat.png"></li>
+			<li data-name="linktocat"><img src="images/linktocat.png"></li>
+			<li data-name="kimonotocat"><img src="images/kimonotocat.png"></li>
+			<li data-name="octdreycatburn"><img src="images/octdreycatburn.png"></li>
+			<li data-name="spocktocat"><img src="images/spocktocat.png"></li>
+			<li data-name="octobiwan"><img src="images/octobiwan.png"></li>
+			<li data-name="strongbadtocat"><img src="images/strongbadtocat.png"></li>
+			<li data-name="octdreycatburn"><img src="images/octdreycatburn.png"></li>
+			<li data-name="professortocat"><img src="images/professortocat.png"></li>
+			<li data-name="strongbadtocat"><img src="images/strongbadtocat.png"></li>
+			<li data-name="stormtroopocat"><img src="images/stormtroopocat.png"></li>
+			<li data-name="kimonotocat"><img src="images/kimonotocat.png"></li>
+		</ul>
+	</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script type="text/javascript">
+ 
+	var selectCard = function() {
+		var $this = $(this);
+		$this.addClass("selected")
+		if ($(".selected").size() == 2) {
+			setTimeout(checkPattern,1400);
+		}
+	}
+
+	var checkPattern = function() {
+		if (isMatchPattern()) {
+			$(".selected").removeClass("selected").addClass("removed").unbind("click");
+			if ($(".removed").length == 20) {
+				alert("Game Over");
+			}
+		} else {
+			$(".selected").removeClass("selected");
+		}
+	}
+ 
+	var isMatchPattern = function() {
+		var cards = $(".selected");
+		var pattern = $(cards[0]).data("name");
+		var anotherPattern = $(cards[1]).data("name");
+		return (pattern == anotherPattern)
+	}
+
+	var removeTookCards = function() {
+		
+	}
+
+ 	$(".board li").click(selectCard);
+
+</script>
+</body>
+
+</html>
+
+
+
+

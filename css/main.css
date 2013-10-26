@@ -1,0 +1,45 @@
+body {
+	font-family: 'Helvetica', sans-serif;
+	background-image: url(../images/background.png);
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+	font-size: 50px;
+	padding-top: 15px;
+	color: #FFFFFF;
+	text-shadow: 3px 3px 5px #000000;
+}
+
+#game {
+	width: 649px;
+	height: 762px;
+	background-color: #FFFFFF;
+	margin: 10px auto;
+	box-shadow: 1px 1px 10px #000000;
+}
+
+li {
+	width: 150px;
+	height: 140px;
+	background-color: #000000;
+	float: left;
+	margin: 6px;
+}
+
+.board li img {
+	display: none;
+}
+
+.board li.selected img {
+	display: block;
+}
+
+.board li.removed {
+	background-color: #FFFFFF;
+}
+
+html, body {
+	height: 100%;
+}
